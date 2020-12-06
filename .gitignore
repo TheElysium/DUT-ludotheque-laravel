@@ -246,3 +246,5 @@ storage/*.key
 
 
 composer.phar
+
+.idea
