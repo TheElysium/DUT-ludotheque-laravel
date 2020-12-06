@@ -29,6 +29,7 @@ class JeuFactory extends Factory {
             'nom' => $this->faker->words(2, true),
             'description' => $this->faker->text(300),
             'regles' => $this->faker->text(300),
+            'url_media' => "images/no-image.png",
             'user_id' => $this->faker->randomElement($user_ids),
             'theme_id' => $this->faker->randomElement($theme_ids),
             'editeur_id' => $this->faker->randomElement($editeurs_ids),
