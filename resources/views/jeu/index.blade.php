@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="text-center">Tous les jeu de la super ludotheque de l'IUT de Lens</h1>
+    <h1 class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1>
     <hr>
     <a href="{{ URL::route('jeu_index', $sort) }}">Trié par nom</a>
     <div class="row">
