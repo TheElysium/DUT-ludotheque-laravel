@@ -29,6 +29,8 @@ Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
 
 Route::get('/jeux/rules/{id}', [JeuController::class, 'rules'])->name('jeu_rules');
 
+Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create');
+
+Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store')->middleware('auth');
+
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
-
-

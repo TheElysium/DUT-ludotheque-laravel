@@ -5,8 +5,16 @@
 @section('content')
 
     <h1 class="text-center">Tous les jeux de la super ludotheque de l'IUT de Lens</h1>
-    <hr>
-    <a href="{{ URL::route('jeu_index', $sort) }}">Trié par nom</a>
+    <div class="row">
+        <div class="col-6 text-left">
+            @auth
+                <a class="btn btn-success" href="{{ URL::route('jeu_create') }}">Ajouter un jeu</a>
+            @endauth
+        </div>
+        <div class="col-6 text-right">
+            <a href="{{ URL::route('jeu_index', $sort) }}">Trié par nom</a>
+        </div>
+    </div>
     <div class="row">
 
 
