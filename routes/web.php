@@ -29,6 +29,6 @@ Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
 
 Route::get('/jeux/rules/{id}', [JeuController::class, 'rules'])->name('jeu_rules');
 
-Route::get('/jeux/', [JeuController::class, 'index'])->name('jeu_index');
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
 

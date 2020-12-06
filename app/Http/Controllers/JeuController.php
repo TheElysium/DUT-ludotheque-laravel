@@ -16,11 +16,22 @@ class JeuController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index($sort = null)
     {
-        $jeux = Jeu::all();
 
-        return view('jeu.index', ['jeux' =>$jeux]);
+        if($sort !== null){
+            if($sort){
+                $jeux = Jeu::all()->sortBy('nom');
+            }else{
+                $jeux = Jeu::all()->sortByDesc('nom');
+            }
+            $sort = !$sort;
+        }else{
+            $jeux = Jeu::all();
+            $sort = true;
+        }
+
+        return view('jeu.index', ['jeux' =>$jeux, 'sort' => intval($sort)]);
     }
 
     /**
