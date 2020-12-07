@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\JeuController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JeuController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +15,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth'])->get('/dashboard', [HomeController::class, 'cinqAleatoires'])->name('dashboard');
+
+Route::get('/jeux/{id}', function ($id) {
+    return view('welcome');
+})->name('jeux.show');
 
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
 

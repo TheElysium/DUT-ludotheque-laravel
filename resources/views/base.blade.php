@@ -37,6 +37,9 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
+                <a class="nav-link" href="{{ URL::route('dashboard') }}">dashboard</a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ URL::route('jeu_index') }}">Jeux</a>
             </li>
 

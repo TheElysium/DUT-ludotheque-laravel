@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-6 ">
             <div class="card">
-                <img src="{{ $jeu->url_media }}" class="card-img-top" alt="...">
+                <img src="{{ url($jeu->url_media) }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $jeu->nom }}</h5>
                     <p class="card-text">

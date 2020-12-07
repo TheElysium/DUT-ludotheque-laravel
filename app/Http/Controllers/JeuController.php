@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class JeuController extends Controller
@@ -32,7 +33,7 @@ class JeuController extends Controller
             $jeux = Jeu::all();
             $sort = true;
         }
-
+        Log::info(url($jeux[0]->url_media));
         return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort)]);
     }
 

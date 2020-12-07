@@ -29,10 +29,11 @@ class JeuFactory extends Factory {
             'nom' => $this->faker->words(2, true),
             'description' => $this->faker->text(300),
             'regles' => $this->faker->randomHtml(4, 4),
+            'url_media' => "images/no-image.png",
             'user_id' => $this->faker->randomElement($user_ids),
             'theme_id' => $this->faker->randomElement($theme_ids),
             'editeur_id' => $this->faker->randomElement($editeurs_ids),
-            'url_media' => 'https://picsum.photos/seed/'.$this->faker->text(5).'/200/200',
+//            'url_media' => 'https://picsum.photos/seed/'.$this->faker->text(5).'/200/200',
             'duree' => $this->faker->randomElement(['- de 10 Minute', 'Entre 10 et 20 Min', 'Une demi heure', 'une heure', 'Plus d\'une heure']),
             'langue' => $this->faker->randomElement(['français', 'Anglais', 'Allemand']),
             'nombre_joueurs' => $this->faker->numberBetween('2', '10' ),
@@ -41,6 +42,4 @@ class JeuFactory extends Factory {
                 , 'jeu de rôle', 'jeu de tuiles', 'Murder Party']),
         ];
     }
-
-
 }
