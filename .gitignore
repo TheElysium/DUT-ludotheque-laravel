@@ -246,7 +246,6 @@ storage/*.key
 # Local History for Visual Studio Code
 .history/
 
-
 composer.phar
 
-.idea
+.idea/
