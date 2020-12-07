@@ -11,6 +11,7 @@
             <p><i class="fas fa-users pr-2"></i>{{$jeu->nombre_joueurs}}</p>
             <p class="m-0"><span class="text-gray-800  font-bold">Thème : </span>{{$jeu->theme->nom}}</p>
             <p class="m-0"><span class="text-gray-800  font-bold">Editeur : </span>{{$jeu->editeur->nom}}</p>
+            <p class="m-0"><span class="text-gray-800  font-bold">Catégorie : </span>{{$jeu->categorie}}</p>
             <p><span class="text-gray-800  font-bold">Age : </span>{{$jeu->age}}</p>
             <div class="px-6 py-4">
                 @foreach($jeu->mecaniques as $mecanique)
@@ -23,7 +24,7 @@
                 <h1 class="text-gray-700 font-bold text-xl">{{$jeu->note()}}</h1>
                 <a type="button"
                    class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
-                   href="{{route('jeux.show', ['id' => $jeu->id])}}">Voir les détails</a>
+                   href="{{route('jeu_show', ['id' => $jeu->id])}}">Voir les détails</a>
             </div>
         </div>
     </div>

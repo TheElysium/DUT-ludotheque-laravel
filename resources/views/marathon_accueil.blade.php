@@ -1,4 +1,4 @@
-@extends('base.master2')
+@extends('base.master')
 
 @section('content')
     <main class="flex-1 bg-gray-200 dark:bg-gray-900 overflow-y-auto transition duration-500 ease-in-out w-">
