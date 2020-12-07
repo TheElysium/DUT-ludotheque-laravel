@@ -21,12 +21,6 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->get('/dashboard', [HomeController::class, 'cinqAleatoires'])->name('dashboard');
 
-Route::get('/jeux/{id}', function ($id) {
-    return view('welcome');
-})->name('jeux.show');
-
-
-
 //Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');

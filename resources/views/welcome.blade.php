@@ -27,6 +27,7 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
+                        <a href="{{ URL::route('jeu_index') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
                     @else
                         <a href="{{ route('login') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
 
@@ -39,6 +40,7 @@
             </div>
         </div>
     </nav>
+
 
     <!--Hero-->
     <div class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
