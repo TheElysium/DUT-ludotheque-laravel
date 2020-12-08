@@ -25,11 +25,11 @@
             </div>
             <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    <a href="{{ URL::route('jeu_index') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
 
                     @else
-                        <a href="{{ URL::route('jeu_index') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
                         <a href="{{ route('login') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
 
                         @if (Route::has('register'))

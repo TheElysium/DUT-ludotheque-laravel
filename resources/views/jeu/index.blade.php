@@ -12,10 +12,10 @@
             @endauth
         </div>
         <div class="col-6 text-right">
-            <a href="{{ URL::route('jeu_index', $sort) }}">Trié par nom</a>
+            <a href="{{ URL::route('jeu_index', $sort) }}">Trié par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row ">
 
 
         @foreach ($jeux as $jeu)

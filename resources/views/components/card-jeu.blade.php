@@ -21,7 +21,7 @@
                 @endforeach
             </div>
             <div class="flex item-center justify-between mt-3">
-                <h1 class="text-gray-700 font-bold text-xl">{{$jeu->note()}}</h1>
+                <h1 class="text-gray-700 font-bold text-xl"> Note moyenne :</h1>
                 <a type="button"
                    class="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded"
                    href="{{route('jeu_show', ['id' => $jeu->id])}}">Voir les détails</a>

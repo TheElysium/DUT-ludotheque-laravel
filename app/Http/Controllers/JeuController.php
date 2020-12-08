@@ -21,7 +21,7 @@ class JeuController extends Controller
      */
     public function index($sort = null)
     {
-
+        $filter = null;
         if($sort !== null){
             if($sort){
                 $jeux = Jeu::all()->sortBy('nom');
@@ -29,12 +29,13 @@ class JeuController extends Controller
                 $jeux = Jeu::all()->sortByDesc('nom');
             }
             $sort = !$sort;
+            $filter = true;
         } else{
             $jeux = Jeu::all();
             $sort = true;
         }
         Log::info(url($jeux[0]->url_media));
-        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort)]);
+        return view('jeu.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
