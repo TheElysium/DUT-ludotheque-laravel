@@ -22,11 +22,11 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body style="padding-top: 50px;">
+<body style="padding-top: 50px;" class="bg-green-400">
 
 @section('navbar')
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="{{ URL::route('home') }}">Ludotheque</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-green-800 fixed-top">
+    <a class="navbar-brand" href="{{ URL::route('home') }}"><span class="text-2xl pl-2"><i class="fa fa-home"></i> IUT Lens</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -27,12 +27,13 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
-                        <a href="{{ URL::route('jeu_index') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
+
                     @else
-                        <a href="{{ route('login') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
+                        <a href="{{ URL::route('jeu_index') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">jeux</a>
+                        <a href="{{ route('login') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-gray-500 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Enregistrement</a>
+                            <a href="{{ route('register') }}" class="text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Enregistrement</a>
                         @endif
                     @endauth
                 </div>
