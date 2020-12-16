@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JeuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,13 @@ Route::get('/enonce', function () {
 
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
 
-Route::resource('jeux', \App\Http\Controllers\JeuController::class);
+Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create');
+
+Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store');
+
+Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
