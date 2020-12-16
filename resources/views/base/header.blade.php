@@ -1,138 +1,249 @@
-<!--Header Section Starts Here-->
-<header class="bg-gray-500">
-    <!-- This example requires Tailwind CSS v2.0+ -->
-    <div>
-        <nav class="bg-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-                        </div>
-                        <div class="hidden md:block">
-                            <div class="ml-10 flex items-baseline space-x-4">
-                                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+<nav
+    class="w-56 bg-white dark:bg-gray-800 select-none overflow-y-auto
+		transition duration-500 ease-in-out">
 
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
-
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
-
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
-                            <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                                <span class="sr-only">View notifications</span>
-                                <!-- Heroicon name: bell -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                                </svg>
-                            </button>
-
-                            <!-- Profile dropdown -->
-                            <div class="ml-3 relative">
-                                <div>
-                                    <button class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-haspopup="true">
-                                        <span class="sr-only">Open user menu</span>
-                                        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                    </button>
-                                </div>
-                                <!--
-                                  Profile dropdown panel, show/hide based on dropdown state.
-
-                                  Entering: "transition ease-out duration-100"
-                                    From: "transform opacity-0 scale-95"
-                                    To: "transform opacity-100 scale-100"
-                                  Leaving: "transition ease-in duration-75"
-                                    From: "transform opacity-100 scale-100"
-                                    To: "transform opacity-0 scale-95"
-                                -->
-                                <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="-mr-2 flex md:hidden">
-                        <!-- Mobile menu button -->
-                        <button class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                            <span class="sr-only">Open main menu</span>
-                            <!--
-                              Heroicon name: menu
-
-                              Menu open: "hidden", Menu closed: "block"
-                            -->
-                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            <!--
-                              Heroicon name: x
-
-                              Menu open: "block", Menu closed: "hidden"
-                            -->
-                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!--
-              Mobile menu, toggle classes based on menu state.
-
-              Open: "block", closed: "hidden"
-            -->
-            <div class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
-
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
-
-                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reports</a>
-                </div>
-                <div class="pt-4 pb-3 border-t border-gray-700">
-                    <div class="flex items-center px-5">
-                        <div class="flex-shrink-0">
-                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                        </div>
-                        <div class="ml-3">
-                            <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                            <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
-                        </div>
-                        <button class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                            <span class="sr-only">View notifications</span>
-                            <!-- Heroicon name: bell -->
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="mt-3 px-2 space-y-1">
-                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Your Profile</a>
-
-                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Settings</a>
-
-                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Sign out</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <div class="flex flex-col items-center ">
+        <h1
+            class="text-4xl font-light text-pink-600 dark:text-pink-400 mt-0
+				transition duration-500 ease-in-out">
+            Ludothèque
+        </h1>
 
     </div>
-</header>
-<!--/Header-->
+
+    <ul>
+        {{--
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 576 512">
+                                    <path
+                                        d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5
+                                        21.5 48 48.1 48h479.8c26.6 0 48.1-21.5
+                                        48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1
+                                        80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6
+                                        6-6zm467.8 352H54.1c-3.3
+                                        0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192
+                                        332v40c0 6.6-5.4 12-12 12h-72c-6.6
+                                        0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12
+                                        5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6
+                                        0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0
+                                        12 5.4 12 12z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">my card</span>
+                            </span>
+                    </button>
+                </li>
+        --}}
+
+        <li
+            class="pl-8 py-2 font-semibold text-pink-500 dark:text-pink-400
+				border-l-2 border-pink-500 hover:bg-pink-200 mb-2 transition
+				duration-500 ease-in-out">
+
+            <a type="button" href="{{route('dashboard')}}"
+               class="focus:text-pink-500 dark-focus:text-pink-400
+					focus:outline-none w-full transition duration-500 ease-in-out">
+
+					<span class="flex items-center">
+                        <i class="fas fa-tachometer-alt float-left mx-2"></i>
+						<span class="ml-4 capitalize">dashboard</span>
+					</span>
+            </a>
+        </li>
+
+        <li
+            class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+				duration-500 ease-in-out">
+
+            <a type="button" href="{{route('jeux.index')}}"
+               class="focus:text-pink-500 dark-focus:text-pink-400
+					focus:outline-none w-full transition duration-500 ease-in-out">
+
+					<span class="flex items-center">
+{{--						<svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+							<path
+                                d="M20 10H4V4h16m0 11H4v-2h16m0-11H4c-1.11 0-2
+								.89-2 2v11c0 1.11.89 2 2 2h4v5l4-2 4 2v-5h4c1.11
+								0 2-.89 2-2V4c0-1.11-.89-2-2-2z"></path>
+						</svg>--}}
+                        <i class="fas fa-list-ul float-left mx-2"></i>
+						<span class="ml-4 capitalize">liste</span>
+					</span>
+            </a>
+        </li>
+        <li
+            class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="focus:text-pink-500 dark-focus:text-pink-400
+                    focus:outline-none w-full transition duration-500 ease-in-out" type="submit">
+                <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M16 9c6 0 6 4 6
+                                        4v2h-6v-2s0-1.69-1.15-3.2c-.17-.23-.38-.45-.6-.66C14.77
+                                        9.06 15.34 9 16 9m-8 2c3.5 0 3.94 1.56 4
+                                        2H4c.06-.44.5-2 4-2m0-2c-6 0-6 4-6
+                                        4v2h12v-2s0-4-6-4m1 8v2h6v-2l3 3-3 3v-2H9v2l-3-3
+                                        3-3M8 3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1
+                                        .45-1 1-1m0-2C6.34 1 5 2.34 5 4s1.34 3 3 3 3-1.34
+                                        3-3-1.34-3-3-3m8 0c-1.66 0-3 1.34-3 3s1.34 3 3 3
+                                        3-1.34 3-3-1.34-3-3-3z"></path>
+                                </svg>
+                    <span class="ml-4 capitalize">Déconnexion</span>
+                </span>
+                </button>
+            </form>
+        </li>
+        {{--
+
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M16 9c6 0 6 4 6
+                                        4v2h-6v-2s0-1.69-1.15-3.2c-.17-.23-.38-.45-.6-.66C14.77
+                                        9.06 15.34 9 16 9m-8 2c3.5 0 3.94 1.56 4
+                                        2H4c.06-.44.5-2 4-2m0-2c-6 0-6 4-6
+                                        4v2h12v-2s0-4-6-4m1 8v2h6v-2l3 3-3 3v-2H9v2l-3-3
+                                        3-3M8 3c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1
+                                        .45-1 1-1m0-2C6.34 1 5 2.34 5 4s1.34 3 3 3 3-1.34
+                                        3-3-1.34-3-3-3m8 0c-1.66 0-3 1.34-3 3s1.34 3 3 3
+                                        3-1.34 3-3-1.34-3-3-3z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">manage team</span>
+                            </span>
+                    </button>
+                </li>
+
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M21 8V6H7v2h14m0 8v-5H7v5h14m0-12a2 2 0 012
+                                        2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V6c0-1.11.89-2
+                                        2-2h14M3 20h15v2H3a2 2 0 01-2-2V9h2v11z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">manage cards</span>
+                            </span>
+                    </button>
+                </li>
+
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 448 512">
+                                    <path
+                                        d="M128 148v-40c0-6.6 5.4-12 12-12h40c6.6 0 12
+                                        5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6
+                                        0-12-5.4-12-12zm140 12h40c6.6 0 12-5.4
+                                        12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12
+                                        12v40c0 6.6 5.4 12 12 12zm-128 96h40c6.6 0 12-5.4
+                                        12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12
+                                        12v40c0 6.6 5.4 12 12 12zm128 0h40c6.6 0 12-5.4
+                                        12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12
+                                        12v40c0 6.6 5.4 12 12 12zm-76
+                                        84v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12
+                                        12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4
+                                        12-12zm76 12h40c6.6 0 12-5.4
+                                        12-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12
+                                        12v40c0 6.6 5.4 12 12 12zm180 124v36H0v-36c0-6.6
+                                        5.4-12 12-12h19.5V24c0-13.3 10.7-24
+                                        24-24h337c13.3 0 24 10.7 24 24v440H436c6.6 0 12
+                                        5.4 12 12zM79.5 463H192v-67c0-6.6 5.4-12
+                                        12-12h40c6.6 0 12 5.4 12 12v67h112.5V49L80 48l-.5
+                                        415z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">company profile</span>
+                            </span>
+                    </button>
+                </li>
+
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
+                        duration-500 ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M3 13h12v-2H3m0-5v2h18V6M3 18h6v-2H3v2z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">manage categories</span>
+                            </span>
+                    </button>
+                </li>
+
+                <li
+                    class="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
+                        hover:bg-pink-200 dark-hover:bg-pink-500 transition duration-500
+                        ease-in-out">
+
+                    <button
+                        class="focus:text-pink-500 dark-focus:text-pink-400
+                            focus:outline-none w-full transition duration-500 ease-in-out">
+
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 496 512">
+                                    <path
+                                        d="M248 104c-53 0-96 43-96 96s43 96 96 96 96-43
+                                        96-96-43-96-96-96zm0 144c-26.5
+                                        0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5
+                                        48-48 48zm0-240C111 8 0 119 0 256s111 248 248 248
+                                        248-111 248-248S385 8 248 8zm0 448c-49.7
+                                        0-95.1-18.3-130.1-48.4 14.9-23 40.4-38.6
+                                        69.6-39.5 20.8 6.4 40.6 9.6 60.5 9.6s39.7-3.1
+                                        60.5-9.6c29.2 1 54.7 16.5 69.6 39.5-35 30.1-80.4
+                                        48.4-130.1
+                                        48.4zm162.7-84.1c-24.4-31.4-62.1-51.9-105.1-51.9-10.2
+                                        0-26 9.6-57.6 9.6-31.5 0-47.4-9.6-57.6-9.6-42.9
+                                        0-80.6 20.5-105.1 51.9C61.9 339.2 48 299.2 48
+                                        256c0-110.3 89.7-200 200-200s200 89.7 200 200c0
+                                        43.2-13.9 83.2-37.3 115.9z"></path>
+                                </svg>
+                                <span class="ml-4 capitalize">my profile</span>
+                            </span>
+                    </button>
+                </li>
+
+        --}}
+    </ul>
+</nav>
