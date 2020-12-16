@@ -124,4 +124,11 @@ class JeuController extends Controller
     {
         //
     }
+
+    public function regles($id){
+        $jeux = Jeu::all();
+        $jeu = $jeux->find($id);
+        return view('jeux.regles', ['jeu' => $jeu]);
+
+    }
 }

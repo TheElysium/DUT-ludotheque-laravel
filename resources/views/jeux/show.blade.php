@@ -6,7 +6,7 @@
     </div>
     <div>
         <p>{{$jeu->description}}</p>
-        <p>{{$jeu->regles}}</p>
+        <a href="{{route('regles', $jeu->id) }}">Regarder les régles du jeu</a>
         <p>{{$jeu->langue}}</p>
         <img src="{{$jeu->url_media}}" alt="Photo du jeu">
         <p>{{$jeu->age}}</p>
@@ -17,3 +17,6 @@
         <p>{{$jeu->theme->nom}}</p>
 
     </div>
+
+
+
