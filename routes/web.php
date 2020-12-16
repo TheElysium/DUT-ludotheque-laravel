@@ -4,6 +4,7 @@
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
