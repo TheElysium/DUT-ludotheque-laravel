@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
@@ -100,7 +101,9 @@ class JeuController extends Controller
     public function show($id)
     {
         $jeu = Jeu::find($id);
-        return view('jeux.show',['jeu' => $jeu]);
+        $commentaires = Commentaire::all()->where('jeu_id', '=', $id);
+
+        return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires]);
 
     }
 
