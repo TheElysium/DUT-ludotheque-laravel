@@ -7,13 +7,14 @@ use Illuminate\View\Component;
 
 class Carte extends Component
 {
-    private $nom;
-    private $editeur;
-    private $theme;
+    public $nom;
+    public $editeur;
+    public $theme;
 
     public function __construct(Jeu $jeu)
     {
-        $this->nom = $jeu->$nom
+        $this->nom = $jeu->$nom;
+        $this->editeur = $jeu->editeur();
     }
 
     /**
