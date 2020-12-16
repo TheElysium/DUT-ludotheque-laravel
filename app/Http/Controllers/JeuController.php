@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Editeur;
 use App\Models\Jeu;
+use App\Models\Theme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JeuController extends Controller
 {
@@ -25,7 +28,10 @@ class JeuController extends Controller
      */
     public function create()
     {
-        return view('jeux.create');
+        $editeurs = Editeur::all();
+        $themes = Theme::all();
+
+        return view('jeux.create', ["editeurs"=>$editeurs, "themes"=>$themes]);
     }
 
     /**
@@ -55,9 +61,13 @@ class JeuController extends Controller
         $jeu->categorie = $request->categorie;
         $jeu->duree = $request->duree;
 
+        $jeu->user_id = Auth::id();
+        $jeu->theme_id = $request->theme;
+        $jeu->editeur_id = $request->editeur;
+
         $jeu->save();
 
-        return redirect()->route('smartphone.index');
+        return redirect()->route('jeux.index');
     }
 
     /**

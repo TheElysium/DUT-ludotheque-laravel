@@ -27,8 +27,11 @@
     <div>
         {{-- Thème  --}}
         <label for="theme"><strong>Thème</strong></label>
-        <input type="text" class="form-control" id="theme" name="theme"
-               value="{{ old('theme') }}">
+        <select name="theme" id="theme">
+            @foreach($themes as $theme)
+                <option value = "{{$theme->id}}">{{$theme->nom}}</option>
+            @endforeach
+        </select>
     </div>
     <div>
         {{-- Description  --}}
@@ -86,10 +89,13 @@
                value="{{ old('duree') }}">
     </div>
     <div>
-        {{-- Editeur --}}
-        <label for="editeur"><strong>Editeur</strong></label>
-        <input type="text" class="form-control" id="editeur" name="editeur"
-               value="{{ old('editeur') }}">
+        {{-- Editeur  --}}
+        <label for="editeur"><strong>Thème</strong></label>
+        <select name="editeur" id="thediteureme">
+            @foreach($editeurs as $editeur)
+                <option value = "{{$editeur->id}}">{{$editeur->nom}}</option>
+            @endforeach
+        </select>
     </div>
     <div class="flex justify-end">
         <button
