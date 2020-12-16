@@ -10,7 +10,7 @@
                 <th>Nom</th>
                 <th>Theme</th>
                 <th>Nombre joueurs</th>
-                <th>Duree</th>
+                <th>Durée</th>
             </tr>
             </thead>
             <tbody>
