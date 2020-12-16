@@ -8,6 +8,7 @@ use App\Models\Jeu;
 use App\Models\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class JeuController extends Controller
@@ -102,8 +103,16 @@ class JeuController extends Controller
     {
         $jeu = Jeu::find($id);
         $commentaires = Commentaire::all()->where('jeu_id', '=', $id);
+        $note_moyenne = Commentaire::all()->where('jeu_id', '=', $id)->avg('note');
+        $note_minimum = Commentaire::all()->where('jeu_id', '=', $id)->min('note');
+        $note_maximum = Commentaire::all()->where('jeu_id', '=', $id)->max('note');
+        $nombres_commentaires = Commentaire::all()->where('jeu_id', '=', $id)->count();
+        $nombres_commentaires_ttl = Commentaire::all()->count();
 
-        return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires]);
+
+        return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires,
+            'note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
+            'nombres_commentaires' => $nombres_commentaires, 'nombres_commentaires_ttl' => $nombres_commentaires_ttl]);
 
     }
 

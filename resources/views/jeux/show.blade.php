@@ -33,6 +33,12 @@
         <p>{{$jeu->theme->nom}}</p>
     </div>
 
+    <div class="h3">Statistiques</div>
+    @include('jeux.statistiques.show', ['note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
+            'nombre_commentaires' => $nombres_commentaires, 'nombre_commentaires_ttl' => $nombres_commentaires_ttl])
+
+
+
     <div class="h3">Ajouter une note</div>
     @if(\Illuminate\Support\Facades\Auth::check())
         @include('jeux.commentaires.create')
