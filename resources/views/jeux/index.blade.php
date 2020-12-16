@@ -10,11 +10,15 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Fabricant</th>
-                <th>Système</th>
-                <th>Réseau</th>
+                <th>Description</th>
+                <th>Regles</th>
+                <th>Langue</th>
                 <th>Caractéristiques</th>
-                <th>Détails</th>
+                <th>Lien</th>
+                <th>Age</th>
+                <th>Nombre joueurs</th>
+                <th>Catégorie</th>
+                <th>Durée</th>
             </tr>
             </thead>
             <tbody>
