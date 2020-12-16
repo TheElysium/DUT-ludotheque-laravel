@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,18 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
-Route::resource('jeux', \App\Http\Controllers\JeuController::class);
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
+
+Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create');
+
+Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store');
+
+Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
+
+
+
+Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
+
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
@@ -34,5 +47,3 @@ Route::get('/{rand}',[HomeController::class,'welcome'])->name('welcome');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-

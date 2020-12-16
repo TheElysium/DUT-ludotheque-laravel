@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class JeuController extends Controller
 {
@@ -15,10 +17,22 @@ class JeuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($sort=null)
     {
-        $jeux = Jeu::all();
-        return view('jeux.index', ['jeux' => $jeux]);
+        $filter = null;
+        if($sort !== null){
+            if($sort){
+                $jeux = Jeu::all()->sortBy('nom');
+            } else{
+                $jeux = Jeu::all()->sortByDesc('nom');
+            }
+            $sort = !$sort;
+            $filter = true;
+        } else{
+            $jeux = Jeu::all();
+            $sort = true;
+        }
+        return view('jeux.index', ['jeux' => $jeux, 'sort' => intval($sort), 'filter' => $filter]);
     }
 
     /**
@@ -87,7 +101,9 @@ class JeuController extends Controller
     public function show($id)
     {
         $jeu = Jeu::find($id);
-        return view('jeux.show',['jeu' => $jeu]);
+        $commentaires = Commentaire::all()->where('jeu_id', '=', $id);
+
+        return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires]);
 
     }
 
