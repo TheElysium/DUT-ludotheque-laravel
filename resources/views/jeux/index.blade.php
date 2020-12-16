@@ -24,17 +24,10 @@
                     <td>{{$jeu->duree}}</td>
 
                     <td>
-                        @can('delete',$jeu)
-                            <a href="{{route('jeux.show',[$jeu->id, 'action'=>'show'])}}"
-                               class="bg-blue-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        @else
                             <a href="{{route('jeux.show',[$jeu->id, 'action'=>'show'])}}"
                                class="bg-red-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i>
+                                Détails
                             </a>
-                        @endcan
                     </td>
                 </tr>
             @endforeach
