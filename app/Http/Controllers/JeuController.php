@@ -6,6 +6,7 @@ use App\Models\Commentaire;
 use App\Models\Editeur;
 use App\Models\Jeu;
 use App\Models\Theme;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -123,9 +124,20 @@ class JeuController extends Controller
             $classement++;
         }
 
+
+        $prix_moyen = DB::table('achats')->where('jeu_id', '=', $jeu->id)->avg('prix');
+        $prix_minimum = DB::table('achats')->where('jeu_id', '=', $jeu->id)->min('prix');
+        $prix_maximum = DB::table('achats')->where('jeu_id', '=', $jeu->id)->max('prix');
+        $nombre_users = DB::table('achats')->where('jeu_id', '=', $jeu->id)->count();
+        $user_total_site = User::all()->count();
+
+
         return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires,
             'note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
-            'nombres_commentaires' => $nombres_commentaires, 'nombres_commentaires_ttl' => $nombres_commentaires_ttl, 'classement' => $classement]);
+            'nombres_commentaires' => $nombres_commentaires, 'nombres_commentaires_ttl' => $nombres_commentaires_ttl, 'classement' => $classement,
+            'prix_moyen' => $prix_moyen, 'prix_minimum' => $prix_minimum, 'prix_maximum' => $prix_maximum, 'nombre_users' => $nombre_users,
+            'user_total_site' => $user_total_site
+            ]);
 
     }
 
