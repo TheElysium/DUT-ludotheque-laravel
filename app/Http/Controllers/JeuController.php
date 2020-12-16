@@ -110,9 +110,22 @@ class JeuController extends Controller
         $nombres_commentaires_ttl = Commentaire::all()->count();
 
 
+        $notes_moyennes_ttl = DB::table('commentaires')
+            ->join('jeux', 'commentaires.jeu_id', '=', 'jeux.id')
+            ->where('jeux.theme_id', '=', $jeu->theme_id)
+            ->avg('note');
+
+        $classement = 1;
+        foreach ((array)$notes_moyennes_ttl as $n){
+            if ($note_moyenne>=$n){
+                break;
+            }
+            $classement++;
+        }
+
         return view('jeux.show',['jeu' => $jeu, 'commentaires' => $commentaires,
             'note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
-            'nombres_commentaires' => $nombres_commentaires, 'nombres_commentaires_ttl' => $nombres_commentaires_ttl]);
+            'nombres_commentaires' => $nombres_commentaires, 'nombres_commentaires_ttl' => $nombres_commentaires_ttl, 'classement' => $classement]);
 
     }
 
