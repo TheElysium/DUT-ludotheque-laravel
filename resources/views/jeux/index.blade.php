@@ -10,14 +10,8 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Description</th>
-                <th>Regles</th>
-                <th>Langue</th>
-                <th>Caractéristiques</th>
-                <th>Lien</th>
-                <th>Age</th>
+                <th>Theme</th>
                 <th>Nombre joueurs</th>
-                <th>Catégorie</th>
                 <th>Durée</th>
             </tr>
             </thead>
@@ -25,14 +19,8 @@
             @foreach($jeux as $jeu)
                 <tr>
                     <td>{{$jeu->nom}}</td>
-                    <td>{{$jeu->description}}</td>
-                    <td>{{$jeu->regles}}</td>
-                    <td>{{$jeu->langue}}</td>
-                    <td>{{$jeu->caracteristiques}}</td>
-                    <td>{{$jeu->url_media}}</td>
-                    <td>{{$jeu->age}}</td>
+                    <td>{{$jeu->theme()}}</td>
                     <td>{{$jeu->nombre_joueurs}}</td>
-                    <td>{{$jeu->categorie}}</td>
                     <td>{{$jeu->duree}}</td>
 
                     <td>
