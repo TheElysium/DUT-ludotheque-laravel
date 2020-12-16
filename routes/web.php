@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JeuController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,5 @@ Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
+Route::middleware(['auth'])->get('/dashboard', [HomeController::class, 'aleatoire'])->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
