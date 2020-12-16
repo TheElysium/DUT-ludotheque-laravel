@@ -25,7 +25,7 @@ class JeuController extends Controller
      */
     public function create()
     {
-        return view('jeux.index');
+        return view('jeux.create');
     }
 
     /**
@@ -36,7 +36,28 @@ class JeuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            'description' => 'required',
+            'theme' => 'required',
+            'editeur' => 'required',
+        ]);
+
+        $jeu = new Jeu();
+
+        $jeu->nom = $request->nom;
+        $jeu->description = $request->description;
+        $jeu->regles = $request->regles;
+        $jeu->langue = $request->langue;
+        $jeu->url_media = $request->url_media;
+        $jeu->age = $request->age;
+        $jeu->nombre_joueurs = $request->nombre_joueurs;
+        $jeu->categorie = $request->categorie;
+        $jeu->duree = $request->duree;
+
+        $jeu->save();
+
+        return redirect()->route('smartphone.index');
     }
 
     /**
