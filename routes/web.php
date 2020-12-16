@@ -28,5 +28,11 @@ Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
-Route::middleware(['auth'])->get('/dashboard', [HomeController::class, 'aleatoire'])->name('dashboard');
+Route::get('/{rand}',[HomeController::class,'welcome'])->name('welcome');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 
