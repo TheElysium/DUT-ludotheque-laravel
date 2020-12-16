@@ -17,7 +17,7 @@
             @foreach($jeux as $jeu)
                 <tr>
                     <td>{{$jeu->nom}}</td>
-                    <td>{{$jeu->theme()}}</td>
+                    <td>{{$jeu->theme->nom}}</td>
                     <td>{{$jeu->nombre_joueurs}}</td>
                     <td>{{$jeu->duree}}</td>
 
