@@ -47,7 +47,7 @@
     </div>
     <div>
         {{-- Langue (checkbox) --}}
-        <label for="langue"><strong>Réseau</strong></label>
+        <label for="langue"><strong>Langue</strong></label>
             <div>
                 <label for="francais">FR</label>
                 <input type="checkbox" name="langue" id="francais" value="francais">
