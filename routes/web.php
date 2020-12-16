@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JeuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::get('/enonce', function () {
 });
 
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
+
+Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
