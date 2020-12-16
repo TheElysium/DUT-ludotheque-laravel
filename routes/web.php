@@ -44,3 +44,4 @@ Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles'
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+

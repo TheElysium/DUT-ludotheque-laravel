@@ -40,5 +40,4 @@
         <p>Connectez-vous pour poster un avis !</p>
     @endif
 
-
-
+@endsection
