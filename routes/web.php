@@ -4,6 +4,7 @@
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,14 +35,14 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store')
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
-
+Route::middleware(['auth'])->get('/profil', [UserController::class, 'current']);
 
 Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
 
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
-Route::get('/{rand}',[HomeController::class,'welcome'])->name('welcome');
+Route::get('/{rand?}',[HomeController::class,'welcome'])->name('welcome');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
