@@ -10,14 +10,14 @@
                 <th>Nom</th>
                 <th>Theme</th>
                 <th>Nombre joueurs</th>
-                <th>Durée</th>
+                <th>Duree</th>
             </tr>
             </thead>
             <tbody>
             @foreach($jeux as $jeu)
                 <tr>
                     <td>{{$jeu->nom}}</td>
-                    <td>{{$jeu->theme()}}</td>
+                    <td>{{$jeu->theme->nom}}</td>
                     <td>{{$jeu->nombre_joueurs}}</td>
                     <td>{{$jeu->duree}}</td>
 
