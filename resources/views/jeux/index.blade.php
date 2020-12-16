@@ -9,6 +9,7 @@
             <tr>
                 <th>Nom</th>
                 <th>Theme</th>
+                <th>Image</th>
                 <th>Nombre joueurs</th>
                 <th>Durée</th>
             </tr>
@@ -18,6 +19,7 @@
                 <tr>
                     <td>{{$jeu->nom}}</td>
                     <td>{{$jeu->theme->nom}}</td>
+                    <td><img src="{{$jeu->url_media}}"></td>
                     <td>{{$jeu->nombre_joueurs}}</td>
                     <td>{{$jeu->duree}}</td>
 
