@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,8 +41,9 @@ Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commen
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
+Route::get('/{rand}',[HomeController::class,'welcome'])->name('welcome');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
