@@ -1,4 +1,10 @@
 @section('content')
+    @if(session()->has('message.level'))
+        <div class="alert alert-{{ session('message.level') }}">
+        {{session('message.content')}}
+            </div>
+    @endif
+
     <div class="container mx-auto px-4">
         <div class="flex justify-end">
             <a href="{{route('jeu_create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>

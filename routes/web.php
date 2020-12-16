@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,12 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store');
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
 
+
+
+Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
+
+
+Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

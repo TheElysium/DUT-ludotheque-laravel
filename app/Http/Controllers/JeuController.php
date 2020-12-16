@@ -55,6 +55,13 @@ class JeuController extends Controller
      */
     public function store(Request $request)
     {
+        $jeu = new Jeu();
+
+        if(!Auth::check()){
+            $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
+            $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu !"); #contenu du message d'alerte
+            return redirect()->route('jeux.index');
+        }
         $validatedData = $request->validate([
             'nom' => 'required',
             'description' => 'required',
@@ -62,7 +69,6 @@ class JeuController extends Controller
             'editeur' => 'required',
         ]);
 
-        $jeu = new Jeu();
 
         $jeu->nom = $request->nom;
         $jeu->description = $request->description;
@@ -80,6 +86,8 @@ class JeuController extends Controller
 
         $jeu->save();
 
+        $request->session()->flash('message.level','success'); # le niveau du message d'alerte, valeurs possibles : danger ou success
+        $request->session()->flash('message.content',"Jeu ajouté avec succès !");
         return redirect()->route('jeux.index');
     }
 
@@ -91,7 +99,9 @@ class JeuController extends Controller
      */
     public function show($id)
     {
-        //
+        $jeu = Jeu::find($id);
+        return view('jeux.show',['jeu' => $jeu]);
+
     }
 
     /**
@@ -126,5 +136,12 @@ class JeuController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function regles($id){
+        $jeux = Jeu::all();
+        $jeu = $jeux->find($id);
+        return view('jeux.regles', ['jeu' => $jeu]);
+
     }
 }
