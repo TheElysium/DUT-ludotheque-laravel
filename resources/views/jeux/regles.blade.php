@@ -7,6 +7,6 @@
     <a href="{{route('jeux.show',[$jeu->id, 'action'=>'show'])}}">Retour au jeu</a>
 
     <a href="{{route('jeux.index') }}">Retour à la liste des jeux</a>
-
+@endsection
 
 

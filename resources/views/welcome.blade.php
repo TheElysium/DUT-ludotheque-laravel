@@ -1,4 +1,5 @@
 @extends('base.master')
+@section('content')
 
 @auth
 	<a href="{{ route('dashboard') }}" class="no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
@@ -14,4 +15,4 @@
 
 @yield('aleatoire')
 
-@include('base.footer')
+@endsection
