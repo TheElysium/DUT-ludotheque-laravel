@@ -26,13 +26,13 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
-Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index');
 
-Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeu_create');
+Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeux.create');
 
-Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeu_store');
+Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 
-Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeu_show');
+Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
 
 
