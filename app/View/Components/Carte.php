@@ -7,19 +7,11 @@ use Illuminate\View\Component;
 
 class Carte extends Component
 {
-    public $nom;
-    public $editeur;
-    public $theme;
-    public $url_media;
-    public $tags;
+    public $jeu;
 
     public function __construct(Jeu $jeu)
     {
-        $this->nom = $jeu->nom;
-        $this->editeur = $jeu->editeur();
-        $this->theme = $jeu->theme();
-        $this->url_media = $jeu->url_media;
-        $this->tags = $jeu->mecaniques();
+        $this->jeu = $jeu;
     }
 
     /**

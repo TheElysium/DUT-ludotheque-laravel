@@ -1,12 +1,15 @@
-<div class="card">
+@push('styles')
+    <link href="{{ asset('resources/css/carte.css') }}" rel="stylesheet">
+@endpush
+
+<div class="carte card">
     <div class="card-body">
-        <img src={{$url_media}} alt="$nom">
-        <h5 class="card-title">{{$nom}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{$editeur}}</h6>
-{{--        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--}}
+        <img src={{$jeu->url_media}} alt="$nom">
+        <h5 class="card-title">{{$jeu->nom}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{$jeu->editeur->nom}}</h6>
         <div class="d-flex p-2 bg-light">
-            @foreach ($tags as $t)
-                <span class="badge badge-pill badge-primary">{{$t}}</span>
+            @foreach ($jeu->mecaniques as $t)
+                <span class="tag badge badge-pill badge-primary">{{$t->nom}}</span>
             @endforeach
         </div>
     </div>
