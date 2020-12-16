@@ -1,3 +1,4 @@
+@extends('base.master')
 @section('content')
     @if(session()->has('message.level'))
         <div class="alert alert-{{ session('message.level') }}">
@@ -43,4 +44,3 @@
 
 @endsection
 
-@yield('content')

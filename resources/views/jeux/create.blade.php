@@ -1,6 +1,8 @@
 {{--
    messages d'erreurs dans la saisie du formulaire.
 --}}
+@extends('base.master')
+@section('content')
 
 @if ($errors->any())
     <div>
@@ -105,3 +107,4 @@
     </div>
 </form>
 
+@endsection

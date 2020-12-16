@@ -17,3 +17,4 @@
         <p>{{$jeu->theme->nom}}</p>
 
     </div>
+@endsection

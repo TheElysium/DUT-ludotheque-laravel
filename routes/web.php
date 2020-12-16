@@ -27,3 +27,4 @@ Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
