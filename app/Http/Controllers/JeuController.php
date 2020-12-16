@@ -42,6 +42,11 @@ class JeuController extends Controller
      */
     public function store(Request $request)
     {
+        $jeu = new Jeu();
+
+        if(!Auth::check()){
+            return redirect()->route('jeux.index');
+        }
         $validatedData = $request->validate([
             'nom' => 'required',
             'description' => 'required',
@@ -49,7 +54,6 @@ class JeuController extends Controller
             'editeur' => 'required',
         ]);
 
-        $jeu = new Jeu();
 
         $jeu->nom = $request->nom;
         $jeu->description = $request->description;
