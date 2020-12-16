@@ -22,6 +22,8 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeu_index');
+
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
