@@ -22,7 +22,7 @@
     </div>
     <div>
         <p>{{$jeu->description}}</p>
-        <a href="{{route('regles', $jeu->id) }}">Regarder les régles du jeu</a>
+        <a href="{{route('regles', $jeu->id) }}">Regarder les règles du jeu</a>
         <p>{{$jeu->langue}}</p>
         <img src="{{$jeu->url_media}}" alt="Photo du jeu">
         <p>{{$jeu->age}}</p>
@@ -40,5 +40,6 @@
         <p>Connectez-vous pour poster un avis !</p>
     @endif
 
-
+    <div class="h3">Commentaires</div>
+    @include('jeux.commentaires.show',['commentaires' => $commentaires])
 
