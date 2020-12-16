@@ -26,20 +26,7 @@
             <tbody>
 
             @foreach($jeux as $jeu)
-                <tr>
-                    <td>{{$jeu->nom}}</td>
-                    <td>{{$jeu->theme->nom}}</td>
-                    <td><img src="{{$jeu->url_media}}"></td>
-                    <td>{{$jeu->nombre_joueurs}}</td>
-                    <td>{{$jeu->duree}}</td>
-
-                    <td>
-                            <a href="{{route('jeux.show',[$jeu->id, 'action'=>'show'])}}"
-                               class="bg-red-400 cursor-pointer rounded p-1 mx-1 text-white">
-                                Détails
-                            </a>
-                    </td>
-                </tr>
+                <x-carte :jeu="$jeu"/>
             @endforeach
             </tbody>
         </table>
