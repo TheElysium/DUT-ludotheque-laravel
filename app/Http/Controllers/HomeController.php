@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     function welcome($aleatoire=null){
-        if($aleatoire !== null){
+        if($aleatoire == 'rand'){
             $jeux = $this->aleatoire(5);
             return view('welcome-aleatoire',['jeux' => $jeux]);
         }

@@ -1,7 +1,7 @@
 @extends('base.master')
 
 @auth
-	<a href="{{ url('/dashboard') }}" class="no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
+	<a href="{{ route('dashboard') }}" class="no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a>
     <a href="{{ route('welcome', 'rand') }}">5 Jeux aléatoires</a>
 
 @else
