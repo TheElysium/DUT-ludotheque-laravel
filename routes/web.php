@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\JeuController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::get('/enonce', function () {
 });
 
 Route::resource('jeux', \App\Http\Controllers\JeuController::class);
+
+Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
+
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
