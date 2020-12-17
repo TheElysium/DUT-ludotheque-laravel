@@ -195,8 +195,8 @@ class JeuController extends Controller
             $request->session()->flash('message.content',"Vous n'êtes pas connecté !");
             return redirect()->route('auth.login');
         }
-        $jeux = Jeu::all()->where('user_id','=',Auth::id());
-        if (empty($jeux)) {
+        $jeux = DB::table('achats')->join('jeux', 'jeux.id', '=', 'achats.jeu_id')->where('achats.user_id', Auth::id())->get();
+        if ($jeux->count() == 0) {
             $request->session()->flash('message.level','danger');
             $request->session()->flash('message.content',"Vous n'avez aucun jeux !");
             return redirect()->route('user.show');
@@ -216,8 +216,7 @@ class JeuController extends Controller
             $request->session()->flash('message.content',"Ce jeu n'existe pas !");
             return redirect()->route('user.show');
         }
-        //$jeu->acheteurs()->detach(Auth::id());
-        $jeu->delete();
+        $jeu->acheteurs()->detach(Auth::id());
         $request->session()->flash('message.level','sucess');
         $request->session()->flash('message.content',"Jeu supprimé avec succès !");
         return redirect()->route('user.show');
