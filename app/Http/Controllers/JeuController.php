@@ -81,8 +81,14 @@ class JeuController extends Controller
         $jeu->regles = $request->regles;
         $jeu->langue = $request->langue;
 
-        $nom_image = time().'.'.$request->file('url_media')->getClientOriginalExtension();
-        $request->file('url_media')->move(public_path('images'), $nom_image);
+        if($request->file('url_media') === null){
+            $nom_image = null;
+        }
+        else{
+            $nom_image = time().'.'.$request->file('url_media')->getClientOriginalExtension();
+            $request->file('url_media')->move(public_path('images'), $nom_image);
+        }
+
         $jeu->url_media = $nom_image;
 
         $jeu->age = $request->age;
