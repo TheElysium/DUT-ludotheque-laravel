@@ -35,6 +35,7 @@
 {{--    </div>--}}
 {{--</nav>--}}
 
+
 @yield('aleatoire')
 @yield('best')
 
