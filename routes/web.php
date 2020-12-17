@@ -37,6 +37,7 @@ Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index')
 
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 
+Route::get('/jeux/{sort?}/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
 
@@ -57,9 +58,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profil/create', [UserController::class, 'store'])->name('user.storeJeux');
     Route::get('/profil/jeux/{sort?}', [UserController::class, 'jeux']) -> name('user.jeux');
     Route::get('/profil', [UserController::class, 'current'])->name('user.show');
-
+    Route::get('/logout', [UserController::class,'logout'])->name('logout');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.show',['user'=>Auth::user()]);
 })->name('dashboard');
+
