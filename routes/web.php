@@ -43,7 +43,9 @@ Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commen
 
 Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles');
 
-Route::get('/{rand?}',[HomeController::class,'welcome'])->name('welcome');
+//Route::get('/{rand?}',[HomeController::class,'welcome'])->name('welcome');
+
+Route::get('/critere',[HomeController::class,'welcome'])->name('welcome');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
