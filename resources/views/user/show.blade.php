@@ -18,8 +18,8 @@
 				{{session('message.content')}}
 			</div>
 		@endif
-		<p>Nom: {{$user->name}}</p>
-		<p>E-mail: {{$user->email}}</p>
+		<p><span class="label label-default">Nom</span>: {{$user->name}}</p>
+		<p><span class="label label-default">E-mail</span>: {{$user->email}}</p>
 	</div>
 
 </div>
