@@ -5,7 +5,7 @@
         {{session('message.content')}}
             </div>
     @endif
-
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
     <div class="container mx-auto px-4">
         <div class="flex justify-end">
             <a href="{{route('jeux.create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>
