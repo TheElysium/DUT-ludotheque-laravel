@@ -14,16 +14,17 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
+@include('base.navbar')
 <body class="h-screen flex items-center justify-center" style="background: #edf2f7;">
 <div class="h-screen w-full flex">
     {{-- navbar --}}
     {{--@include('base.header')--}}
-
     {{-- content --}}
     @yield('content', 'En Attente d\'un contenu')
     {{-- ajoute les scripts javascript pour bootstrap --}}
     @section('scripts')
         <script src="{{ asset('js/app.js')}}"></script>
+@include('base.footer')
 @show
 </body>
 </html>
