@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{route('welcome')}}">
+            <a class="navbar-brand" href="/">
                 <img src="{{ URL::asset('images/logo_rancho_notext.png') }}" width="40" height="40" alt="">
             </a>
         </div>
@@ -19,11 +19,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Route::has('register'))
-                    <li class="nav-item"><a href="{{ route('register') }}" class="no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                    <li class="nav-item"><a href="{{ route('register') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
                         <span class="glyphicon glyphicon-user"></span>Enregistrement
                     </a></li>
                 @endif
-                <li class="nav-item"><a href="{{ route('login') }}" class="no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
                     <span class="glyphicon glyphicon-log-in"></span> Connexion
                 </a></li>
             </ul>
