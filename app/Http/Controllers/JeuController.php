@@ -9,9 +9,11 @@ use App\Models\Mecanique;
 use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use function Livewire\str;
 
 class JeuController extends Controller
 {
@@ -188,7 +190,7 @@ class JeuController extends Controller
         return view('jeux.regles', ['jeu' => $jeu]);
 
     }
-    
+
     public function promptdelete(Request $request) {
         if (!Auth::check()) {
             $request->session()->flash('message.level','danger');
@@ -203,7 +205,7 @@ class JeuController extends Controller
         }
         return view('user.delete', ['jeux' => $jeux]);
     }
-    
+
     public function delete(Request $request) {
         if (!Auth::check()) {
             $request->session()->flash('message.level','danger');

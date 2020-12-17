@@ -37,7 +37,7 @@ Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index')
 
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 
-Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
+Route::get('/jeux/{sort?}/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
 
 Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
