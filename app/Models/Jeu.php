@@ -38,4 +38,15 @@ class Jeu extends Model {
     function commentaires() {
         return $this->hasMany(Commentaire::class);
     }
+
+    function noteMoyenne(){
+        $cumul = 0;
+        $nb = 0;
+        foreach ($this->commentaires as $commentaire){
+            $cumul += $commentaire->note;
+            $nb++;
+        }
+        if($nb!=0) return $cumul/$nb;
+        return -1;
+    }
 }
