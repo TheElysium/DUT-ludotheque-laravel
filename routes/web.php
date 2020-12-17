@@ -57,9 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profil/create', [UserController::class, 'store'])->name('user.storeJeux');
     Route::get('/profil/jeux/{sort?}', [UserController::class, 'jeux']) -> name('user.jeux');
     Route::get('/profil', [UserController::class, 'current'])->name('user.show');
-
+    Route::get('/logout', [UserController::class,'logout'])->name('logout');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+

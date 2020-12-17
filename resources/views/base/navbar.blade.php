@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a></li>
                 <li class="nav-item"><a href="{{ url('profil') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Profil</a></li>
+                <li class="nav-item"><a href="{{ url('logout') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Déconnexion</a></li>
             </ul>
         @else
             </ul>
