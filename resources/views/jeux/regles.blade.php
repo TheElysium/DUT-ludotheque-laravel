@@ -1,12 +1,13 @@
 @extends('base.master')
 @section('content')
 
-    <div class="h1">{{$jeu->nom}}</div>
+    <h1>{{$jeu->nom}}</h1>
+
     <p>{{$jeu->regles}}</p>
 
     <a href="{{route('jeux.show',[$jeu->id, 'action'=>'show'])}}">Retour au jeu</a>
-
+    <br/>
     <a href="{{route('jeux.index') }}">Retour à la liste des jeux</a>
 
-
+@endsection
 

@@ -51,4 +51,4 @@
 
     <div class="h3">Commentaires</div>
     @include('jeux.commentaires.show',['commentaires' => $commentaires])
-
+@endsection
