@@ -32,16 +32,12 @@ Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeux.create'
 
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index');
 
-Route::middleware(['auth'])->get('/jeux/promptdelete', [JeuController::class, 'promptdelete'])->name('jeux.promptdelete');
 
-Route::middleware(['auth'])->post('/jeux/delete', [JeuController::class, 'delete'])->name('jeux.delete');
+
 
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
-
-Route::middleware(['auth'])->get('/profil', [UserController::class, 'current'])->name('user.show');
-Route::middleware(['auth'])->get('/profil/jeux/{sort?}', [UserController::class, 'jeux']) -> name('user.jeux');
 
 
 Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
@@ -53,8 +49,16 @@ Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles'
 
 Route::get('/critere',[HomeController::class,'welcome'])->name('welcome');
 
-Route::get('/profil/create', [UserController::class, 'create'])->name('user.ajoutJeux');
-Route::post('/profil/create', [UserController::class, 'store'])->name('user.storeJeux');
+Route::middleware(['auth'])->group(function () {
+
+    Route::post('/profil/delete', [JeuController::class, 'delete'])->name('jeux.delete');
+    Route::get('/profil/promptdelete', [JeuController::class, 'promptdelete'])->name('user.promptdelete');
+    Route::get('/profil/create', [UserController::class, 'create'])->name('user.ajoutJeux');
+    Route::post('/profil/create', [UserController::class, 'store'])->name('user.storeJeux');
+    Route::get('/profil/jeux/{sort?}', [UserController::class, 'jeux']) -> name('user.jeux');
+    Route::get('/profil', [UserController::class, 'current'])->name('user.show');
+
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

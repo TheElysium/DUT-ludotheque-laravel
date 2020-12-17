@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -71,5 +73,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Jeu::class, 'achats')
             ->as('achat')
             ->withPivot('prix', 'lieu', 'date_achat');
+    }
+
+    public function jeuxNotInLudo(){
+        $jeux_achetes = DB::table('achats')->where('user_id','=',Auth::id())->get();
+        $jeux_achetes_id = $jeux_achetes->pluck('jeu_id');
+
+        $jeux = Jeu::All()->whereNotIn('id',$jeux_achetes_id);
+
+        return $jeux;
     }
 }
