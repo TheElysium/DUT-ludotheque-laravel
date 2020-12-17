@@ -27,9 +27,10 @@ Route::get('/enonce', function () {
     return view('enonce.index');
 });
 
-Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index');
 
 Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeux.create');
+
+Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index');
 
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 

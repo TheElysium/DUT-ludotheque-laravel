@@ -14,7 +14,7 @@
     </div>
 @endif
 
-<form action="{{route('jeux.store')}}" method="POST">
+<form action="{{route('jeux.store')}}" method="POST" enctype="multipart/form-data">
     {!! csrf_field() !!}
     <div class="text-center" style="margin-top: 2rem">
         <h3>Ajout d'un jeu</h3>
@@ -63,7 +63,7 @@
     <div>
         {{--  URL Média  --}}
         <label for="url_media"><strong>URL Média</strong></label>
-        <input type="text" class="form-control" id="url_media" name="url_media"
+        <input type="file" class="form-control" id="url_media" name="url_media"
                value="{{ old('url_media') }}">
     </div>
     <div>
@@ -90,6 +90,18 @@
         <input type="text" class="form-control" id="duree" name="duree"
                value="{{ old('duree') }}">
     </div>
+    <div>
+        {{-- Mécaniques --}}
+        <label for="mecaniques"><strong>Mécaniques</strong></label>
+        <div>
+            @foreach($mecaniques as $mecanique)
+                <label for="mecaniques">{{$mecanique->nom}}</label>
+                <input type="checkbox" name="mecaniques[]" id={{$mecanique->id}} value={{$mecanique->id}}>
+            @endforeach
+        </div>
+
+    </div>
+
     <div>
         {{-- Editeur  --}}
         <label for="editeur"><strong>Thème</strong></label>

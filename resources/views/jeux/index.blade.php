@@ -8,7 +8,7 @@
 {{--    <script type="text/javascript" src="{{ asset('js/filtre.js') }}"></script>--}}
     <div class="container mx-auto px-4">
         <div class="flex justify-end">
-            <a href="{{route('jeux.create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>
+            <a href="{{URL::route('jeux.create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu</button></a>
             <a href="{{ URL::route('jeux.index', $sort) }}">Trier par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             <span style="margin-left: 5%;"><label for="filter_theme">Filtrer par thème...</label><select name="filter_theme" id="filter_theme" onchange="filtre.call('theme', this)"></select></span>
             <span style="margin-left: 5%;"><label for="filter_editeur">Filtrer par éditeur...</label><select name="filter_editeur" id="filter_editeur" onchange="filtre.call('editeur', this)"></select></span>
