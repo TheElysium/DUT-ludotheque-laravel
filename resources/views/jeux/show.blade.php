@@ -16,22 +16,23 @@
         </div>
     @endif
 
-
+<div class="container-fluid">
     <div>
-        <h1 style="text-align: center;">{{$jeu->nom}}</h1>
-
+        <h1 style="font-size: 5em; font-weight: bold;">{{$jeu->nom}}</div>
     </div>
     <div>
-        <p>{{$jeu->description}}</p>
-        <a href="{{route('regles', $jeu->id) }}">Regarder les règles du jeu</a>
-        <p>{{$jeu->langue}}</p>
+        <h3 style="font-weight: bold;">Description</h3>
+        <div style="font-size:1.5em;">{{$jeu->description}}</div>
+        <h3 style="font-weight: bold;"><a href="{{route('regles', $jeu->id) }}">Regles</a></h3>
+        <h3 style="margin-bottom: 1vh; font-weight: bold;">Image du jeu</h3>
         <img src="{{asset("images/$jeu->url_media")}}" alt="Photo du jeu">
-        <p>{{$jeu->age}}</p>
-        <p>{{$jeu->nombre_joueurs}}</p>
-        <p>{{$jeu->categorie}}</p>
-        <p>{{$jeu->duree}}</p>
-        <p>{{$jeu->editeur->nom}}</p>
-        <p>{{$jeu->theme->nom}}</p>
+        <p style="color: dimgrey">Editeur: {{$jeu->editeur->nom}}</p>
+        <p style="color: dimgrey">Langue: {{$jeu->langue}}
+        <p style="color: dimgrey">Age: {{$jeu->age}}</p>
+        <p style="color: dimgrey">Nombre de joueurs: {{$jeu->nombre_joueurs}}</p>
+        <p style="color: dimgrey">Catégorie: {{$jeu->categorie}}</p>
+        <p style="color: dimgrey">Durée d'une partie: {{$jeu->duree}}</p>
+        <p style="color: dimgrey">Thème: {{$jeu->theme->nom}}</p>
     </div>
     
     <div style="float: right;">
@@ -54,6 +55,6 @@
 
     <div class="h3">Commentaires</div>
     @include('jeux.commentaires.show',['commentaires' => $commentaires])
-    
-@endsection
 
+</div>
+@endsection
