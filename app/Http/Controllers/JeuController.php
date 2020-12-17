@@ -188,7 +188,7 @@ class JeuController extends Controller
         return view('jeux.regles', ['jeu' => $jeu]);
 
     }
-    
+
     public function promptdelete(Request $request) {
         if (!Auth::check()) {
             $request->session()->flash('message.level','danger');
@@ -203,7 +203,7 @@ class JeuController extends Controller
         }
         return view('user.delete', ['jeux' => $jeux]);
     }
-    
+
     public function delete(Request $request) {
         if (!Auth::check()) {
             $request->session()->flash('message.level','danger');
