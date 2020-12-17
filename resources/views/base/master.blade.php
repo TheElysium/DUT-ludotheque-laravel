@@ -17,6 +17,7 @@
 <body class="h-screen flex items-center justify-center" style="background: #edf2f7;">
 <div class="h-screen w-full flex">
     {{-- navbar --}}
+    {{--@include('base.header')--}}
 
     {{-- content --}}
     @yield('content', 'En Attente d\'un contenu')
