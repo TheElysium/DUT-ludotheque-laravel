@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jeu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -100,7 +101,8 @@ class UserController extends Controller
 
     public function jeux(){ // retourne la liste des jeux de l'utilisateur courant
         if (Auth::check()) {
-            return view('user.show', ["user" => Auth::user()]);
+            $jeux = Jeu::all()->pluck('user_id')->where('user_id','=',Auth::id());
+            return view('user.jeux', ["user" => Auth::user(),'jeux'=> $jeux,'sort'=>null,'filter'=>null,'route'=>'user.jeux']);
         }
         else
         {
