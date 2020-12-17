@@ -8,6 +8,7 @@ use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -46,7 +47,7 @@ class UserController extends Controller
 
         if(!Auth::check()){
             $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
-            $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu !"); #contenu du message d'alerte
+            $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu à votre collection !"); #contenu du message d'alerte
             return redirect()->route('auth.login');
         }
         $validatedData = $request->validate([
@@ -138,20 +139,15 @@ class UserController extends Controller
 
     public function jeux($sort=null){ // retourne la liste des jeux de l'utilisateur courant
         if (Auth::check()) {
-            $jeux = Jeu::all()->where('user_id','=',Auth::id());
+            $jeux_achetes = DB::table('achats')->where('user_id','=',Auth::id())->get();
+            $jeux_achetes_id = $jeux_achetes->pluck('jeu_id');
 
-            if($sort !== null){
-                if($sort){
-                    $res = $jeux->sortBy('nom');
-                } else{
-                    $res = $jeux->sortByDesc('nom');
-                }
-                $sort = !$sort;
-            } else{
-                $res = $jeux;
-                $sort = true;
+            $jeux = [];
+            foreach ($jeux_achetes_id as $id){
+                $jeux[] = Jeu::find($id);
             }
-            $res = $jeux->sortBy('nom');
+
+            $res = $jeux; // TODO : ré-implémenter la fonction de tri
             return view('user.jeux', ["user" => Auth::user(),'jeux'=> $res,'sort'=>$sort,'filter'=>null,'route'=>'user.jeux']);
         }
         else
