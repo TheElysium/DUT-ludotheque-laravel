@@ -37,7 +37,7 @@
     @include('jeux.statistiques.show', ['note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
             'nombre_commentaires' => $nombres_commentaires, 'nombre_commentaires_ttl' => $nombres_commentaires_ttl])
 
-    <div class="h3">Informations tarifaires</div>
+    <div class="h3 center">Informations tarifaires</div>
     @include('jeux.tarif', ['prix_moyen' => $prix_moyen, 'prix_minimum' => $prix_minimum, 'prix_maximum' => $prix_maximum,
             'nombre_users' => $nombre_users, 'user_total_site' => $user_total_site])
 
