@@ -39,7 +39,6 @@
     <h3 class="h3">Statistiques</h3>
     @include('jeux.statistiques.show', ['note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
             'nombre_commentaires' => $nombres_commentaires, 'nombre_commentaires_ttl' => $nombres_commentaires_ttl])
-<<<<<<< resources/views/jeux/show.blade.php
 
     <div class="h3 center">Informations tarifaires</div>
     @include('jeux.tarif', ['prix_moyen' => $prix_moyen, 'prix_minimum' => $prix_minimum, 'prix_maximum' => $prix_maximum,
@@ -55,6 +54,5 @@
 
     <div class="h3">Commentaires</div>
     @include('jeux.commentaires.show',['commentaires' => $commentaires])
-
-</div>
+<<<<<<< HEAD
 @endsection
