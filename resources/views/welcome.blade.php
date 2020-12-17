@@ -17,3 +17,4 @@
 @yield('best')
 
 @include('base.footer')
+

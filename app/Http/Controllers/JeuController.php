@@ -188,4 +188,20 @@ class JeuController extends Controller
         return view('jeux.regles', ['jeu' => $jeu]);
 
     }
+    
+    public function promptdelete() {
+        if (!Auth::check()) {
+            return redirect()->route('jeux.index')->with('status', 'Vous n\'êtes pas connecté');
+        }
+        $jeux = DB::table('achats')->join('jeux', 'jeux.id', '=', 'achats.jeu_id')->where('achats.user_id', 2)->get();
+        return view('jeux.delete', ['jeux' => $jeux]);
+    }
+    
+    public function delete(Request $request) {
+        if (!Auth::check()) {
+            return redirect()->route('jeux.index')->with('status', 'Impossible de supprimer le jeu');
+        }
+        $jeu = Jeu::find($request->jeu)->acheteurs()->detach(2);
+        return redirect()->route('user.show')->with('status', 'Jeu supprimé avec succès');
+    }
 }

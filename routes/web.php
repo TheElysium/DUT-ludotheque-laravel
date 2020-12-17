@@ -32,11 +32,15 @@ Route::get('/jeux/create', [JeuController::class, 'create'])->name('jeux.create'
 
 Route::get('/jeux/{sort?}', [JeuController::class, 'index'])->name('jeux.index');
 
+Route::middleware(['auth'])->get('/jeux/promptdelete', [JeuController::class, 'promptdelete'])->name('jeux.promptdelete');
+
+Route::middleware(['auth'])->post('/jeux/delete', [JeuController::class, 'delete'])->name('jeux.delete');
+
 Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store');
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
-Route::middleware(['auth'])->get('/profil', [UserController::class, 'current']) -> name('user.show');
+Route::middleware(['auth'])->get('/profil', [UserController::class, 'current'])->name('user.show');
 Route::middleware(['auth'])->get('/profil/jeux/{sort?}', [UserController::class, 'jeux']) -> name('user.jeux');
 
 
