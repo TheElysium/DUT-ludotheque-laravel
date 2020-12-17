@@ -85,7 +85,7 @@ class UserController extends Controller
     {
         //
     }
-    
+
     public function current()
     {
         if (Auth::check()) {
@@ -97,4 +97,14 @@ class UserController extends Controller
         }
     }
 
+
+    public function jeux(){ // retourne la liste des jeux de l'utilisateur courant
+        if (Auth::check()) {
+            return view('user.show', ["user" => Auth::user()]);
+        }
+        else
+        {
+            return redirect()->route('auth.login');
+        }
+    }
 }

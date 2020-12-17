@@ -36,7 +36,9 @@ Route::post('/jeux/create', [JeuController::class, 'store'])->name('jeux.store')
 
 Route::get('/jeux/show/{id}', [JeuController::class, 'show'])->name('jeux.show');
 
-Route::middleware(['auth'])->get('/profil', [UserController::class, 'current']);
+Route::middleware(['auth'])->get('/profil', [UserController::class, 'current']) -> name('user.show');
+Route::middleware(['auth'])->get('/profil/jeux', [UserController::class, 'jeux']) -> name('user.jeux');
+
 
 Route::post('/jeux/{id}', [CommentaireController::class, 'store'])->name('commentaires.store');
 
