@@ -24,7 +24,7 @@
         <p>{{$jeu->description}}</p>
         <a href="{{route('regles', $jeu->id) }}">Regarder les règles du jeu</a>
         <p>{{$jeu->langue}}</p>
-        <img src="{{$jeu->url_media}}" alt="Photo du jeu">
+        <img src="{{asset("images/$jeu->url_media")}}" alt="Photo du jeu">
         <p>{{$jeu->age}}</p>
         <p>{{$jeu->nombre_joueurs}}</p>
         <p>{{$jeu->categorie}}</p>

@@ -78,7 +78,11 @@ class JeuController extends Controller
         $jeu->description = $request->description;
         $jeu->regles = $request->regles;
         $jeu->langue = $request->langue;
-        $jeu->url_media = $request->url_media;
+
+        $nom_image = time().'.'.$request->file('url_media')->getClientOriginalExtension();
+        $request->file('url_media')->move(public_path('images'), $nom_image);
+        $jeu->url_media = $nom_image;
+
         $jeu->age = $request->age;
         $jeu->nombre_joueurs = $request->nombre_joueurs;
         $jeu->categorie = $request->categorie;
