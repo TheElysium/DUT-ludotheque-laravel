@@ -18,7 +18,7 @@
 <div class="h-screen w-full flex">
     {{-- navbar --}}
     @include('base.header')
-
+    {{-- content --}}
     {{-- content --}}
     @yield('content', 'En Attente d\'un contenu')
     {{-- ajoute les scripts javascript pour bootstrap --}}
