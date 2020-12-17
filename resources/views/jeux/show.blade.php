@@ -6,7 +6,7 @@
 --}}
 
     @if ($errors->any())
-        <div>
+        <div class="center">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -16,11 +16,11 @@
     @endif
 
 
-    <div>
+    <div class="center">
         <div class="h1">{{$jeu->nom}}</div>
 
-    </div>
-    <div>
+    </div >
+    <div class="center">
         <p>{{$jeu->description}}</p>
         <a href="{{route('regles', $jeu->id) }}">Regarder les règles du jeu</a>
         <p>{{$jeu->langue}}</p>
@@ -33,7 +33,7 @@
         <p>{{$jeu->theme->nom}}</p>
     </div>
 
-    <div class="h3">Statistiques</div>
+    <div class="h3 center">Statistiques</div>
     @include('jeux.statistiques.show', ['note_moyenne' => $note_moyenne, 'note_minimum' => $note_minimum, 'note_maximum' => $note_maximum,
             'nombre_commentaires' => $nombres_commentaires, 'nombre_commentaires_ttl' => $nombres_commentaires_ttl])
 
@@ -42,13 +42,13 @@
             'nombre_users' => $nombre_users, 'user_total_site' => $user_total_site])
 
 
-    <div class="h3">Ajouter une note</div>
+    <div class="h3 center">Ajouter une note</div>
     @if(\Illuminate\Support\Facades\Auth::check())
         @include('jeux.commentaires.create')
     @else
-        <p>Connectez-vous pour poster un avis !</p>
+        <p class="center">Connectez-vous pour poster un avis !</p>
     @endif
 
-    <div class="h3">Commentaires</div>
+    <div class="h3 center">Commentaires</div>
     @include('jeux.commentaires.show',['commentaires' => $commentaires])
 
