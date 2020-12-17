@@ -30,9 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $editeurs = Editeur::all();
-        $themes = Theme::all();
-        return view('user.ajoutJeux',['editeurs'=>$editeurs,'themes'=>$themes]);
+        $jeux = Jeu::all();
+        return view('user.ajoutJeux',['jeux'=>$jeux]);
     }
 
     /**
@@ -43,36 +42,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $jeu = new Jeu();
-
         if(!Auth::check()){
             $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
             $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu à votre collection !"); #contenu du message d'alerte
             return redirect()->route('auth.login');
         }
         $validatedData = $request->validate([
-            'nom' => 'required',
-            'description' => 'required',
-            'theme' => 'required',
-            'editeur' => 'required',
+            'lieu'=>'required',
+            'date'=>'required',
+            'prix'=>'required',
         ]);
 
+        $jeu = Jeu::find($request->get('jeu'));
+        $date = $request->get('date');
+        $prix = $request->get('prix');
 
-        $jeu->nom = $request->nom;
-        $jeu->description = $request->description;
-        $jeu->regles = $request->regles;
-        $jeu->langue = $request->langue;
-        $jeu->url_media = $request->url_media;
-        $jeu->age = $request->age;
-        $jeu->nombre_joueurs = $request->nombre_joueurs;
-        $jeu->categorie = $request->categorie;
-        $jeu->duree = $request->duree;
+        if($jeu === null){
+            $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
+            $request->session()->flash('message.content',"Erreur, jeu inconnu");
+            return redirect()->route('user.jeux');
+        }
 
-        $jeu->user_id = Auth::id();
-        $jeu->theme_id = $request->theme;
-        $jeu->editeur_id = $request->editeur;
-
-        $jeu->save();
+        DB::table('achats')->insert(['user_id'=>Auth::id(),'jeu_id'=>$jeu->id,'date_achat'=>$date,'prix'=>$prix]);
 
         $request->session()->flash('message.level','success'); # le niveau du message d'alerte, valeurs possibles : danger ou success
         $request->session()->flash('message.content',"Jeu ajouté avec succès !");
