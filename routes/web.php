@@ -61,6 +61,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.show',['user'=>Auth::user()]);
 })->name('dashboard');
 

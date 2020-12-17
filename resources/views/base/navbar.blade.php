@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('welcome')}}">
                 <img src="{{ URL::asset('images/logo_rancho_notext.png') }}" width="40" height="40" alt="">
             </a>
         </div>
@@ -12,7 +12,6 @@
                 <li class="nav-item"><a href="{{ route('welcome', ['options' => 'best']) }}" class="nav-link">5 Meilleurs jeux</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Dashboard</a></li>
                 <li class="nav-item"><a href="{{ url('profil') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Profil</a></li>
                 <li class="nav-item"><a href="{{ url('logout') }}" class="nav-link no-underline hover:text-gray-200 hover:text-underline py-2 px-4">Déconnexion</a></li>
             </ul>
