@@ -47,6 +47,8 @@ Route::get('/jeux/regles/{id}', [JeuController::class, 'regles'])->name('regles'
 
 Route::get('/{rand?}',[HomeController::class,'welcome'])->name('welcome');
 
+Route::get('/profil/create', [UserController::class, 'create'])->name('user.ajoutJeux');
+Route::post('/profil/create', [UserController::class, 'store'])->name('user.storeJeux');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
