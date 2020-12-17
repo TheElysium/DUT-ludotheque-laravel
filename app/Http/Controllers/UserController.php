@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class UserController extends Controller
@@ -47,23 +48,25 @@ class UserController extends Controller
             $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu à votre collection !"); #contenu du message d'alerte
             return redirect()->route('auth.login');
         }
-        $validatedData = $request->validate([
-            'lieu'=>'required',
-            'date'=>'required',
-            'prix'=>'required',
-        ]);
 
-        $jeu = Jeu::find($request->get('jeu'));
-        $date = $request->get('date');
-        $prix = $request->get('prix');
-
-        if($jeu === null){
-            $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
-            $request->session()->flash('message.content',"Erreur, jeu inconnu");
-            return redirect()->route('user.jeux');
-        }
-
-        DB::table('achats')->insert(['user_id'=>Auth::id(),'jeu_id'=>$jeu->id,'date_achat'=>$date,'prix'=>$prix]);
+        $request->validate(
+            [
+                'jeu_id' => 'required',
+                'prix' => 'nullable|numeric',
+                'lieu' => 'nullable',
+                'date_achat' => 'date|required'
+            ],
+            [
+                'jeu_id.required' => 'Le choix du jeu est requis',
+                'prix.numeric' => 'La note doit être numérique',
+                'date_achat.date' => 'Le format de la date est incorrect',
+                'date_achat.required' => 'La date est obligatoire'
+            ]
+        );
+        Log::info($request);
+        $user = Auth::user();
+        $user->ludo_perso()->attach($request->jeu_id, ['prix' => $request->prix, 'date_achat' => $request->date_achat, 'lieu' => $request->lieu]);
+        $user->save();
 
         $request->session()->flash('message.level','success'); # le niveau du message d'alerte, valeurs possibles : danger ou success
         $request->session()->flash('message.content',"Jeu ajouté avec succès !");
@@ -146,4 +149,6 @@ class UserController extends Controller
             return redirect()->route('auth.login');
         }
     }
+
+
 }

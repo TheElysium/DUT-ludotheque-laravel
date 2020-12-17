@@ -27,7 +27,7 @@
             <label for="jeu">Jeu</label>
             <select id="jeu" class="form-control" name="jeu_id">
                 <option selected>Choose...</option>
-                @foreach($jeux as $jeu)
+                    @foreach(Auth::user()->jeuxNotInLudo() as $jeu)
                     <option value="{{$jeu->id}}">{{$jeu->nom}}</option>
                 @endforeach
             </select>
