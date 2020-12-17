@@ -1,5 +1,7 @@
 @extends('base.master')
 
+@section('content')
+
 {{--<nav class="navbar navbar-expand-lg navbar-light bg-light">--}}
 {{--    <div class="container-fluid">--}}
 {{--        <div class="navbar-header">--}}
@@ -35,6 +37,8 @@
 
 @yield('aleatoire')
 @yield('best')
+
+@endsection
 
 {{--@include('base.footer')--}}
 
