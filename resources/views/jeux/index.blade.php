@@ -14,7 +14,7 @@
             <a href="{{ URL::route('jeux.index', $sort) }}">Trier par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             @break
             @case('user.jeux')
-            <a href="{{URL::route('jeux.create')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu à ma collection</button></a>
+            <a href="{{URL::route('user.ajoutJeux')}}"><button class=" bg-blue-600 text-gray-200 px-2 py-2 rounded-md ">Ajouter un jeu à ma collection</button></a>
             <a href="{{ URL::route('user.jeux', $sort) }}">Trier par nom @if ($filter !== null)<i class="fas  @if ($sort == 0)fa-sort-down @else fa-sort-up @endif "></i> @endif</a>
             @break
             @endswitch
