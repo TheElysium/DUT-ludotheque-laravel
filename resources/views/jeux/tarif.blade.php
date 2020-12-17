@@ -5,7 +5,7 @@
 
     $x = $prix_moyen - $prix_minimum;
     $y = $prix_maximum - $prix_minimum;
-    $marginVal = ($x / $y ) * 100;
+    $marginVal = 100;
 
 ?>
 <div class="row">
