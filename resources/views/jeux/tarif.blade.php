@@ -6,11 +6,7 @@
     $x = $prix_moyen - $prix_minimum;
     $y = $prix_maximum - $prix_minimum;
     $marginVal = ($x / $y ) * 100;
-    {{--
-        prix moyen - prix mini = x
-        prix max - prix min = y
-        x / y * 100 = valeur a trouver en margin ( je crois )
-    --}}
+
 ?>
 <div class="row">
     <div class="col-2"></div>
@@ -29,7 +25,11 @@
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
-        <p class="moyen" id="moyen" style="margin-left:{{$marginVal}}">Prix moyen: {{$prix_moyen}}</p></div>
+        <div style="margin-left:{{$marginVal}}%">
+        <p class="moyen">^</p>
+        <p class="moyen">{{$prix_moyen}}</p>
+        </div>
+    </div>
     <div class="col-4"></div>
 </div>
 <div class="row">
