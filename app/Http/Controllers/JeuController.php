@@ -46,7 +46,6 @@ class JeuController extends Controller
     {
         $editeurs = Editeur::all();
         $themes = Theme::all();
-
         return view('jeux.create', ["editeurs"=>$editeurs, "themes"=>$themes]);
     }
 
