@@ -2,6 +2,10 @@
 <?php
     $variable = $nombre_users / $user_total_site *100 ;
     $variable = round ( $variable );
+
+    $x = $prix_moyen - $prix_minimum;
+    $y = $prix_maximum - $prix_minimum;
+    $marginVal = ($x / $y ) * 100;
     {{--
         prix moyen - prix mini = x
         prix max - prix min = y
@@ -25,7 +29,7 @@
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
-        <p class="moyen" id="moyen">Prix moyen: {{$prix_moyen}}</p></div>
+        <p class="moyen" id="moyen" style="margin-left:{{$marginVal}}">Prix moyen: {{$prix_moyen}}</p></div>
     <div class="col-4"></div>
 </div>
 <div class="row">
