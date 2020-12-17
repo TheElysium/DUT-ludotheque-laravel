@@ -189,19 +189,37 @@ class JeuController extends Controller
 
     }
     
-    public function promptdelete() {
+    public function promptdelete(Request $request) {
         if (!Auth::check()) {
-            return redirect()->route('jeux.index')->with('status', 'Vous n\'êtes pas connecté');
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'êtes pas connecté !");
+            return redirect()->route('auth.login');
         }
-        $jeux = DB::table('achats')->join('jeux', 'jeux.id', '=', 'achats.jeu_id')->where('achats.user_id', 2)->get();
-        return view('jeux.delete', ['jeux' => $jeux]);
+        $jeux = Jeu::all()->where('user_id','=',Auth::id());
+        if (empty($jeux)) {
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'avez aucun jeux !");
+            return redirect()->route('user.show');
+        }
+        return view('user.delete', ['jeux' => $jeux]);
     }
     
     public function delete(Request $request) {
         if (!Auth::check()) {
-            return redirect()->route('jeux.index')->with('status', 'Impossible de supprimer le jeu');
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'êtes pas connecté !");
+            return redirect()->route('auth.login');
         }
-        $jeu = Jeu::find($request->jeu)->acheteurs()->detach(2);
-        return redirect()->route('user.show')->with('status', 'Jeu supprimé avec succès');
+        $jeu = Jeu::find($request->jeu);
+        if ($jeu == null) {
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Ce jeu n'existe pas !");
+            return redirect()->route('user.show');
+        }
+        //$jeu->acheteurs()->detach(Auth::id());
+        $jeu->delete();
+        $request->session()->flash('message.level','sucess');
+        $request->session()->flash('message.content',"Jeu supprimé avec succès !");
+        return redirect()->route('user.show');
     }
 }
