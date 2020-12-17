@@ -91,6 +91,18 @@
                value="{{ old('duree') }}">
     </div>
     <div>
+        {{-- Mécaniques --}}
+        <label for="mecaniques"><strong>Mécaniques</strong></label>
+        <div>
+            @foreach($mecaniques as $mecanique)
+                <label for="mecaniques">{{$mecanique->nom}}</label>
+                <input type="checkbox" name="mecaniques[]" id={{$mecanique->id}} value={{$mecanique->id}}>
+            @endforeach
+        </div>
+
+    </div>
+
+    <div>
         {{-- Editeur  --}}
         <label for="editeur"><strong>Thème</strong></label>
         <select name="editeur" id="thediteureme">
