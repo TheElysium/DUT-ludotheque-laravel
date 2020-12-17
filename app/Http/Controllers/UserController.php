@@ -136,10 +136,23 @@ class UserController extends Controller
     }
 
 
-    public function jeux(){ // retourne la liste des jeux de l'utilisateur courant
+    public function jeux($sort=null){ // retourne la liste des jeux de l'utilisateur courant
         if (Auth::check()) {
             $jeux = Jeu::all()->where('user_id','=',Auth::id());
-            return view('user.jeux', ["user" => Auth::user(),'jeux'=> $jeux,'sort'=>null,'filter'=>null,'route'=>'user.jeux']);
+
+            if($sort !== null){
+                if($sort){
+                    $res = $jeux->sortBy('nom');
+                } else{
+                    $res = $jeux->sortByDesc('nom');
+                }
+                $sort = !$sort;
+            } else{
+                $res = $jeux;
+                $sort = true;
+            }
+            $res = $jeux->sortBy('nom');
+            return view('user.jeux', ["user" => Auth::user(),'jeux'=> $res,'sort'=>$sort,'filter'=>null,'route'=>'user.jeux']);
         }
         else
         {
