@@ -16,41 +16,31 @@
 
     <form action="{{route('user.storeJeux')}}" method="POST">
         {!! csrf_field() !!}
-        <div class="text-center" style="margin-top: 2rem">
-            <h3>Ajouter un jeu</h3>
-            <hr class="mt-2 mb-2">
+        <div class="form-group">
+            <label for="date_achat">Date</label>
+            <input type="date" class="form-control" id="date_achat" name="date_achat"
+                   aria-describedby="dateHelp">
+            <small id="dateHelp" class="form-text text-muted">date d'achat.</small>
         </div>
 
-        <div>
-            {{-- Jeu  --}}
-            <label for="jeu"><strong>Jeu</strong></label>
-            <select name="jeu" id="jeu">
+        <div class="form-group">
+            <label for="jeu">Jeu</label>
+            <select id="jeu" class="form-control" name="jeu_id">
+                <option selected>Choose...</option>
                 @foreach($jeux as $jeu)
-                    <option value = "{{$jeu->id}}">{{$jeu->nom}}</option>
+                    <option value="{{$jeu->id}}">{{$jeu->nom}}</option>
                 @endforeach
             </select>
         </div>
-
-        <div>
-            {{-- Date d'achat --}}
-            <label for="date"><strong>Date d'achat</strong></label>
-            <input type="text" class="form-control" id="date" name="date"
-                   value="{{ old('date') }}">
+        <div class="form-group">
+            <label for="prix">Prix</label>
+            <input type="text" class="form-control" id="prix" name="prix" aria-describedby="prixHelp">
+            <small id="prixHelp" class="form-text text-muted">prix d'achat.</small>
         </div>
-
-        <div>
-            {{-- Lieu de stockage --}}
-            <label for="lieu"><strong>Lieu de stockage</strong></label>
-            <input type="text" class="form-control" id="lieu" name="lieu"
-                   value="{{ old('lieu') }}">
-        </div>
-
-
-        <div>
-            {{-- Prix --}}
-            <label for="prix"><strong>Prix d'achat</strong></label>
-            <input type="text" class="form-control" id="prix" name="prix"
-                   value="{{ old('prix') }}">
+        <div class="form-group">
+            <label for="prix">Lieu</label>
+            <input type="text" class="form-control" id="lieu" name="lieu" aria-describedby="lieuHelp">
+            <small id="lieuHelp" class="form-text text-muted">lieu de stockage.</small>
         </div>
 
         <div class="flex justify-end">
