@@ -3,20 +3,15 @@
 --}}
 
 @extends('base.master')
-@section('content')
 
-@if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@section('content')
 
 <form action="{{route('jeux.delete')}}" enctype="multipart/form-data" method="post">
     {!! csrf_field() !!}
+    <p><a href="{{route('user.show')}}">
+        Profil
+    </a>
+    </p>
     <div class="text-center" style="margin-top: 2rem">
         <h3>Suppression d'un Jeu</h3>
         <hr class="mt-2 mb-2">

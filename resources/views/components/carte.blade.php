@@ -2,7 +2,7 @@
 {{--    <link href="{{ asset('public/css/carte.css') }}" rel="stylesheet">--}}
 {{--@endpush--}}
 
-<div class="carte card" onclick="location.href+='show/{{$jeu->id}}'">
+<div class="carte card" onclick="location.href+=(location.href.slice(-1) === '/' ? '' : '/')+'show/{{$jeu->id}}'">
     <link rel="stylesheet" href="{{ URL::asset('css/carte.css') }}">
     <div class="card-body">
         <img src="{{$jeu->url_media}}" alt="{{$jeu->nom}}">

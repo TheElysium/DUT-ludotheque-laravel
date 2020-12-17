@@ -8,6 +8,8 @@ use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class UserController extends Controller
@@ -29,9 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $editeurs = Editeur::all();
-        $themes = Theme::all();
-        return view('user.ajoutJeux',['editeurs'=>$editeurs,'themes'=>$themes]);
+        $jeux = Jeu::all();
+        return view('user.ajoutJeux',['jeux'=>$jeux]);
     }
 
     /**
@@ -42,36 +43,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $jeu = new Jeu();
-
         if(!Auth::check()){
             $request->session()->flash('message.level','danger'); # le niveau du message d'alerte, valeurs possibles : danger ou success
-            $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu !"); #contenu du message d'alerte
+            $request->session()->flash('message.content',"Vous n'avez pas la permission d'ajouter un jeu à votre collection !"); #contenu du message d'alerte
             return redirect()->route('auth.login');
         }
-        $validatedData = $request->validate([
-            'nom' => 'required',
-            'description' => 'required',
-            'theme' => 'required',
-            'editeur' => 'required',
-        ]);
 
-
-        $jeu->nom = $request->nom;
-        $jeu->description = $request->description;
-        $jeu->regles = $request->regles;
-        $jeu->langue = $request->langue;
-        $jeu->url_media = $request->url_media;
-        $jeu->age = $request->age;
-        $jeu->nombre_joueurs = $request->nombre_joueurs;
-        $jeu->categorie = $request->categorie;
-        $jeu->duree = $request->duree;
-
-        $jeu->user_id = Auth::id();
-        $jeu->theme_id = $request->theme;
-        $jeu->editeur_id = $request->editeur;
-
-        $jeu->save();
+        $request->validate(
+            [
+                'jeu_id' => 'required',
+                'prix' => 'nullable|numeric',
+                'lieu' => 'nullable',
+                'date_achat' => 'date|required'
+            ],
+            [
+                'jeu_id.required' => 'Le choix du jeu est requis',
+                'prix.numeric' => 'La note doit être numérique',
+                'date_achat.date' => 'Le format de la date est incorrect',
+                'date_achat.required' => 'La date est obligatoire'
+            ]
+        );
+        Log::info($request);
+        $user = Auth::user();
+        $user->ludo_perso()->attach($request->jeu_id, ['prix' => $request->prix, 'date_achat' => $request->date_achat, 'lieu' => $request->lieu]);
+        $user->save();
 
         $request->session()->flash('message.level','success'); # le niveau du message d'alerte, valeurs possibles : danger ou success
         $request->session()->flash('message.content',"Jeu ajouté avec succès !");
@@ -138,25 +133,32 @@ class UserController extends Controller
 
     public function jeux($sort=null){ // retourne la liste des jeux de l'utilisateur courant
         if (Auth::check()) {
-            $jeux = Jeu::all()->where('user_id','=',Auth::id());
+            $jeux_achetes = DB::table('achats')->where('user_id','=',Auth::id())->get();
+            $jeux_achetes_id = $jeux_achetes->pluck('jeu_id');
 
-            if($sort !== null){
-                if($sort){
-                    $res = $jeux->sortBy('nom');
-                } else{
-                    $res = $jeux->sortByDesc('nom');
-                }
-                $sort = !$sort;
-            } else{
-                $res = $jeux;
-                $sort = true;
+            $jeux = [];
+            foreach ($jeux_achetes_id as $id){
+                $jeux[] = Jeu::find($id);
             }
-            $res = $jeux->sortBy('nom');
+
+            $res = $jeux; // TODO : ré-implémenter la fonction de tri
             return view('user.jeux', ["user" => Auth::user(),'jeux'=> $res,'sort'=>$sort,'filter'=>null,'route'=>'user.jeux']);
         }
         else
         {
             return redirect()->route('auth.login');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        Auth::logout();
+
+        return redirect('/');
     }
 }

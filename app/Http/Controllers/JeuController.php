@@ -9,9 +9,11 @@ use App\Models\Mecanique;
 use App\Models\Theme;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use function Livewire\str;
 
 class JeuController extends Controller
 {
@@ -188,20 +190,37 @@ class JeuController extends Controller
         return view('jeux.regles', ['jeu' => $jeu]);
 
     }
-    
-    public function promptdelete() {
+
+    public function promptdelete(Request $request) {
         if (!Auth::check()) {
-            return redirect()->route('jeux.index')->with('status', 'Vous n\'êtes pas connecté');
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'êtes pas connecté !");
+            return redirect()->route('auth.login');
         }
-        $jeux = DB::table('achats')->join('jeux', 'jeux.id', '=', 'achats.jeu_id')->where('achats.user_id', 2)->get();
-        return view('jeux.delete', ['jeux' => $jeux]);
+        $jeux = DB::table('achats')->join('jeux', 'jeux.id', '=', 'achats.jeu_id')->where('achats.user_id', Auth::id())->get();
+        if ($jeux->count() == 0) {
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'avez aucun jeux !");
+            return redirect()->route('user.show');
+        }
+        return view('user.delete', ['jeux' => $jeux]);
     }
-    
+
     public function delete(Request $request) {
         if (!Auth::check()) {
-            return redirect()->route('jeux.index')->with('status', 'Impossible de supprimer le jeu');
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Vous n'êtes pas connecté !");
+            return redirect()->route('auth.login');
         }
-        $jeu = Jeu::find($request->jeu)->acheteurs()->detach(2);
-        return redirect()->route('user.show')->with('status', 'Jeu supprimé avec succès');
+        $jeu = Jeu::find($request->jeu);
+        if ($jeu == null) {
+            $request->session()->flash('message.level','danger');
+            $request->session()->flash('message.content',"Ce jeu n'existe pas !");
+            return redirect()->route('user.show');
+        }
+        $jeu->acheteurs()->detach(Auth::id());
+        $request->session()->flash('message.level','sucess');
+        $request->session()->flash('message.content',"Jeu supprimé avec succès !");
+        return redirect()->route('user.show');
     }
 }
